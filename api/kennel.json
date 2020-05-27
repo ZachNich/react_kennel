@@ -1,0 +1,22 @@
+{
+    "animals": [
+        { "id": 1, "name": "Doodles", "breed": "Poodle"},
+        { "id": 2, "name": "Decker", "breed": "German Shepherd" },
+        { "id": 3, "name": "Esme", "breed": "Pitbull" }
+    ],
+    "employees": [
+        { "id": 1, "name": "Barty" },
+        { "id": 2, "name": "Lily" },
+        { "id": 3, "name": "Gary" }
+    ],
+    "locations": [
+        { "id": 1, "name": "Northside", "address": "21 Long Pike" },
+        { "id": 2, "name": "Southport", "address": "388 New Way" },
+        { "id": 3, "name": "The Hollows", "address": "19 Hollow Ave." }
+    ],
+    "owners": [
+        { "id": 1, "name": "Von", "phoneNumber": "6150449887" },
+        { "id": 2, "name": "Simon", "phoneNumber": "4238761123" },
+        { "id": 3, "name": "Chaesoo", "phoneNumber": "6159084344" }
+    ]
+}
