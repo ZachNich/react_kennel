@@ -5,9 +5,9 @@
         { "id": 3, "name": "Esme", "breed": "Pitbull" }
     ],
     "employees": [
-        { "id": 1, "name": "Barty" },
-        { "id": 2, "name": "Lily" },
-        { "id": 3, "name": "Gary" }
+        { "id": 1, "name": "Barty", "mood": "apathetic" },
+        { "id": 2, "name": "Lily", "mood": "chipper" },
+        { "id": 3, "name": "Gary", "mood": "frustrated" }
     ],
     "locations": [
         { "id": 1, "name": "Northside", "address": "21 Long Pike" },
