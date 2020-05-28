@@ -13,6 +13,7 @@ const EmployeeCard = props => {
           </span>
         </h3>
         <p>Mood: {props.employee.mood}</p>
+        <button type="button" onClick={() => props.deleteEmployee(props.employee.id)}>Fire!</button>
       </div>
     </div>
   );
