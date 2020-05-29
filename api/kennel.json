@@ -6,11 +6,6 @@
       "breed": "Poodle"
     },
     {
-      "id": 2,
-      "name": "Decker",
-      "breed": "German Shepherd"
-    },
-    {
       "id": 3,
       "name": "Esme",
       "breed": "Pitbull"
@@ -18,10 +13,10 @@
   ],
   "employees": [
     {
-        "id": 1,
-        "name": "Barty",
-        "mood": "apathetic"
-    },  
+      "id": 1,
+      "name": "Barty",
+      "mood": "apathetic"
+    },
     {
       "id": 2,
       "name": "Lily",
@@ -34,16 +29,6 @@
     }
   ],
   "locations": [
-    {
-      "id": 1,
-      "name": "Northside",
-      "address": "21 Long Pike"
-    },
-    {
-      "id": 2,
-      "name": "Southport",
-      "address": "388 New Way"
-    },
     {
       "id": 3,
       "name": "The Hollows",
