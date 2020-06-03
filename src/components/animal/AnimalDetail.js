@@ -35,9 +35,7 @@ const AnimalDetail = props => {
           Name: <span style={{ color: "darkslategrey" }}>{animal.name}</span>
         </h3>
         <p>Breed: {animal.breed}</p>
-        <button type="button" disabled={isLoading} onClick={handleDelete}>
-          Discharge
-        </button>
+        <button type="button" disabled={isLoading} onClick={handleDelete}>Discharge</button>
       </div>
     </div>
   );
