@@ -51,14 +51,10 @@ const ApplicationViews = props => {
         return <AnimalForm {...props} />
       }} />
       <Route exact path="/locations" render={props => {
-          if (hasUser) {
-          return <LocationList {...props} />
-        } else {
-          return <Redirect to="/login" />
-        }
+          return <LocationList hasUser={hasUser} {...props} />
       }} />      
       <Route path="/locations/:locationId(\d+)" render={props => {
-        return <LocationDetail locationId={parseInt(props.match.params.locationId)} {...props} />
+        return <LocationDetail locationId={parseInt(props.match.params.locationId)} hasUser={hasUser} {...props} />
       }} />
       <Route
         exact
