@@ -1,29 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AnimalManager from '../../modules/AnimalManager';
 import EmployeeManager from '../../modules/EmployeeManager';
-import EmployeeOptions from '../employee/EmployeeOption';
 import './AnimalForm.css'
 
 const AnimalForm = props => {
-    const [animal, setAnimal] = useState({ name: "", breed: "" });
+    const [animal, setAnimal] = useState({ name: "", breed: "", employeeId: 0 });
     const [isLoading, setIsLoading] = useState(false);
+    const [employees, setEmployees] = useState([]);
+
+    const getEmployees = () => {
+      return EmployeeManager.getAll()
+        .then(employees => {setEmployees(employees)})
+    }
 
     const handleFieldChange = e => {
         const stateToChange = { ...animal };
-        stateToChange[e.target.id] = e.target.value;
+        parseInt(e.target.value) ? stateToChange[e.target.id] = parseInt(e.target.value) : stateToChange[e.target.id] = e.target.value
         setAnimal(stateToChange);
     };
 
     const constructNewAnimal = e => {
         e.preventDefault();
-        if (animal.name === "" || animal.breed === "") {
-            window.alert('Please input animal name and breed.');
+        if (animal.name === "" || animal.breed === "" || animal.employeeId === "") {
+            window.alert('Please fuck off.');
         } else {
             setIsLoading(true);
             AnimalManager.post(animal)
                 .then(() => props.history.push('/animals'))
         }
     };
+
+    useEffect(() => {getEmployees()}, [])
 
     return (
         <>
@@ -46,6 +53,14 @@ const AnimalForm = props => {
                   placeholder="Breed"
                 />
                 <label htmlFor="breed">Breed</label>
+                <label htmlFor="employees">Assign an employee:</label>
+                <select 
+                  value={animal.employeeId}
+                  id="employeeId"
+                  onChange={handleFieldChange}>
+                  <option value="">Please choose a caretaker</option>
+                  {employees.map(employee => <option value={employee.id} key={employee.id}>{employee.name}</option>)}
+                </select>
               </div>
               <div className="alignRight">
                 <button
@@ -54,12 +69,6 @@ const AnimalForm = props => {
                   onClick={constructNewAnimal}
                 >Submit</button>
               </div>
-            </fieldset>
-            <fieldset>
-                <label for="employees">Assign an employee:</label>
-                <select 
-                    name="employees" 
-                    id="employees-select"></select>
             </fieldset>
           </form>
         </>
