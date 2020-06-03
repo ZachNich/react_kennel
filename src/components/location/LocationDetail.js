@@ -34,9 +34,7 @@ const LocationDetail = props => {
         </picture>
         <h3>Name: <span style={{ color: 'darkslategrey' }}>{location.name}</span></h3>
         <p>Address: {location.address}</p>
-        <button type="button" disabled={isLoading} onClick={handleDelete}>
-          Close
-        </button>
+        {props.hasUser ? <button type="button" disabled={isLoading} onClick={handleDelete}>Close</button> : null}
       </div>
     </div>
   );
