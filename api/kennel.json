@@ -3,17 +3,32 @@
     {
       "id": 1,
       "name": "Doodles",
-      "breed": "Poodle"
+      "breed": "Poodle",
+      "employeeId": 1
     },
     {
       "id": 3,
       "name": "Esme",
-      "breed": "Pitbull"
+      "breed": "Pitbull",
+      "employeeId": 2
     },
     {
       "id": 4,
       "name": "Salek",
-      "breed": "Dummy Thicc"
+      "breed": "Dummy Thicc",
+      "employeeId": 3
+    },
+    {
+      "name": "Chubby",
+      "breed": "Fat Dog",
+      "employeeId": 3,
+      "id": 5
+    },
+    {
+      "name": "Goody",
+      "breed": "Good Dog",
+      "employeeId": 2,
+      "id": 6
     }
   ],
   "employees": [
