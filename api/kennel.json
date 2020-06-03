@@ -29,24 +29,32 @@
     {
       "id": 1,
       "name": "Barty",
-      "mood": "apathetic"
+      "mood": "apathetic",
+      "locationId": 1
     },
     {
       "id": 2,
       "name": "Lily",
-      "mood": "chipper"
+      "mood": "chipper",
+      "locationId": 2
     },
     {
       "id": 3,
       "name": "Gary",
-      "mood": "frustrated"
+      "mood": "frustrated",
+      "locationId": 2
     }
   ],
   "locations": [
     {
-      "id": 3,
+      "id": 1,
       "name": "The Hollows",
       "address": "19 Hollow Ave."
+    },
+    {
+      "id": 2,
+      "name": "Firelink Shrine",
+      "address": "420 Ember St."
     }
   ],
   "owners": [
