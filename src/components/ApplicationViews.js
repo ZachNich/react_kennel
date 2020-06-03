@@ -13,8 +13,10 @@ import EmployeeList from "./employee/EmployeeList";
 import EmployeeWithAnimals from "./employee/EmployeeWithAnimals"
 import OwnerList from "./owner/OwnerList";
 
-const ApplicationViews = () => {
-  const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+const ApplicationViews = props => {
+  const hasUser = props.hasUser;
+  const setUser = props.setUser;
+
   return (
     <React.Fragment>
       <Route
@@ -25,7 +27,7 @@ const ApplicationViews = () => {
         }}
       />
       <Route exact path="/animals" render={props => {
-        if (isAuthenticated()) {
+        if (hasUser) {
           return <AnimalList {...props} />
         } else {
           return <Redirect to="/login" />
@@ -39,7 +41,7 @@ const ApplicationViews = () => {
           );
       }} />
       <Route path="/animals/:animalId(\d+)/edit" render={props => {
-        if (isAuthenticated()) {
+        if (hasUser) {
           return <AnimalEditForm {...props} />
         } else {
           return <Redirect to="/login" />
@@ -49,7 +51,7 @@ const ApplicationViews = () => {
         return <AnimalForm {...props} />
       }} />
       <Route exact path="/locations" render={props => {
-          if (isAuthenticated()) {
+          if (hasUser) {
           return <LocationList {...props} />
         } else {
           return <Redirect to="/login" />
@@ -62,7 +64,7 @@ const ApplicationViews = () => {
         exact
         path="/employees"
         render={props => {
-          if (isAuthenticated()) {
+          if (hasUser) {
           return <EmployeeList {...props} />
         } else {
           return <Redirect to="/login" />
@@ -74,13 +76,15 @@ const ApplicationViews = () => {
       <Route
         path="/owners"
         render={props => {
-          if (isAuthenticated()) {
+          if (hasUser) {
           return <OwnerList {...props} />
         } else {
           return <Redirect to="/login" />
         }
       }} />      
-      <Route path="/login" component={Login} />
+      <Route path="/login" render={props => {
+        return <Login setUser={setUser} {...props} />
+      }} />    
     </React.Fragment>
   );
 };
