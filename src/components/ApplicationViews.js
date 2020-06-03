@@ -10,6 +10,7 @@ import Login from './auth/Login';
 import LocationList from "./location/LocationList";
 import LocationDetail from "./location/LocationDetail";
 import EmployeeList from "./employee/EmployeeList";
+import EmployeeWithAnimals from "./employee/EmployeeWithAnimals"
 import OwnerList from "./owner/OwnerList";
 
 const ApplicationViews = () => {
@@ -58,6 +59,7 @@ const ApplicationViews = () => {
         return <LocationDetail locationId={parseInt(props.match.params.locationId)} {...props} />
       }} />
       <Route
+        exact
         path="/employees"
         render={props => {
           if (isAuthenticated()) {
@@ -66,6 +68,9 @@ const ApplicationViews = () => {
           return <Redirect to="/login" />
         }
       }} />      
+      <Route path="/employees/:employeeId(\d+)" render={(props) => {
+        return <EmployeeWithAnimals {...props} />
+      }} />
       <Route
         path="/owners"
         render={props => {

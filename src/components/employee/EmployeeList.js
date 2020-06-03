@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import EmployeeCard from './EmployeeCard';
 import EmployeeManager from '../../modules/EmployeeManager';
 
-const EmployeeList = () => {
+const EmployeeList = props => {
   // The initial state is an empty array
   const [employees, setEmployees] = useState([]);
 
@@ -29,7 +29,7 @@ const EmployeeList = () => {
   return (
     <div className="container-cards">
       {employees.map(employee => 
-        <EmployeeCard key={employee.id} employee={employee} deleteEmployee={deleteEmployee} />
+        <EmployeeCard key={employee.id} employee={employee} deleteEmployee={deleteEmployee} history={props.history}/>
       )}
     </div>
   );
