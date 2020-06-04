@@ -37,11 +37,11 @@ const ApplicationViews = props => {
         }
       }} />      
       <Route exact path="/animals/:animalId(\d+)" render={props => {
-          // Pass the animalId to the AnimalDetailComponent
-          return (
-            <AnimalDetail animalId={parseInt(props.match.params.animalId)} {...props}
-            />
-          );
+        if (hasUser) {
+          return <AnimalDetail animalId={parseInt(props.match.params.animalId)} {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
       }} />
       <Route path="/animals/:animalId(\d+)/edit" render={props => {
         if (hasUser) {
@@ -51,16 +51,32 @@ const ApplicationViews = props => {
         }
       }} /> 
       <Route path="/animals/new" render={(props) => {
-        return <AnimalForm {...props} />
+        if (hasUser) {
+          return <AnimalForm {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
       }} />
       <Route exact path="/locations" render={props => {
+        if (hasUser) {
           return <LocationList hasUser={hasUser} {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
       }} />      
       <Route path="/locations/:locationId(\d+)" render={props => {
-        return <LocationDetail locationId={parseInt(props.match.params.locationId)} hasUser={hasUser} {...props} />
+        if (hasUser) {
+          return <LocationDetail locationId={parseInt(props.match.params.locationId)} hasUser={hasUser} {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
       }} />
       <Route path="/locations/new" render={props => {
-        return <LocationForm {...props} />
+        if (hasUser) {
+          return <LocationForm {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
       }} />
       <Route
         exact
@@ -73,10 +89,18 @@ const ApplicationViews = props => {
         }
       }} />      
       <Route path="/employees/:employeeId(\d+)" render={(props) => {
-        return <EmployeeWithAnimals {...props} />
+        if (hasUser) {
+          return <EmployeeWithAnimals {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
       }} />
       <Route path="/employees/new" render={props => {
-        return <EmployeeForm {...props} />
+        if (hasUser) {
+          return <EmployeeForm {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
       }} />
       <Route
         exact
@@ -89,7 +113,11 @@ const ApplicationViews = props => {
         }
       }} />
       <Route path="/owners/new" render={props => {
-        return <OwnerForm {...props} />
+        if (hasUser) {
+          return <OwnerForm {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
       }} />
       <Route path="/login" render={props => {
         return <Login setUser={setUser} {...props} />

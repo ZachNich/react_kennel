@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LocationManager from '../../modules/LocationManager';
 import './LocationDetail.css';
 import EmployeeCard from '../employee/EmployeeCard'
+import handleNoId from '../../helpers/handleNoId'
 
 const LocationDetail = props => {
   const [location, setLocation] = useState({ name: "", address: "" });
@@ -28,6 +29,8 @@ const LocationDetail = props => {
       props.history.push("/locations")
     );
   };
+
+  handleNoId(props, location)
 
   return (
     <div className="card">
