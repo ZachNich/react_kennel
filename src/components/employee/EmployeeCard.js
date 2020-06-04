@@ -14,7 +14,7 @@ const EmployeeCard = props => {
         </h3>
         <p>Mood: {props.employee.mood}</p>
         <button type="button" onClick={() => props.history.push(`/employees/${props.employee.id}`)}>Details</button>
-        <button type="button" onClick={() => props.deleteEmployee(props.employee.id)}>Fire!</button>
+        {props.deleteEmployee ? <button type="button" onClick={() => props.deleteEmployee(props.employee.id)}>Fire!</button> : null}
       </div>
     </div>
   );

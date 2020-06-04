@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AnimalManager from "../../modules/AnimalManager";
 import "./AnimalDetail.css";
+import handleNoId from '../../helpers/handleNoId'
 
 const AnimalDetail = props => {
   const [animal, setAnimal] = useState({ name: "", breed: "" });
@@ -25,20 +26,23 @@ const AnimalDetail = props => {
     );
   };
 
-  return (
-    <div className="card">
-      <div className="card-content">
-        <picture>
-          <img src={require("./dog.svg")} alt="My Dog" />
-        </picture>
-        <h3>
-          Name: <span style={{ color: "darkslategrey" }}>{animal.name}</span>
-        </h3>
-        <p>Breed: {animal.breed}</p>
-        <button type="button" disabled={isLoading} onClick={handleDelete}>Discharge</button>
+
+  handleNoId(props, animal)
+
+    return (
+      <div className="card">
+        <div className="card-content">
+          <picture>
+            <img src={require("./dog.svg")} alt="My Dog" />
+          </picture>
+          <h3>
+            Name: <span style={{ color: "darkslategrey" }}>{animal.name}</span>
+          </h3>
+          <p>Breed: {animal.breed}</p>
+          {props.hasUser ? <button type="button" disabled={isLoading} onClick={handleDelete}>Discharge</button> : null}
+        </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default AnimalDetail;

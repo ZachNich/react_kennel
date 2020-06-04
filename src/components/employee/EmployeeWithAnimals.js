@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import EmployeeManager from '../../modules/EmployeeManager'
 import AnimalCard from '../animal/AnimalCard'
+import handleNoId from '../../helpers/handleNoId'
 
 const EmployeeWithAnimals = props => {
   const [employee, setEmployee] = useState({});
@@ -14,6 +15,8 @@ const EmployeeWithAnimals = props => {
         setAnimals(APIResult.animals);
       });
   }, []);
+
+  handleNoId(props, employee)
 
   return (
     <div className="card">

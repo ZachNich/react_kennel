@@ -25,7 +25,6 @@ const Login = props => {
                 placeholder="Email address"
                 required="" autoFocus="" />
                 <label htmlFor="inputEmail">Email address</label>
-    
                 <input onChange={handleFieldChange} type="password"
                 id="password"
                 placeholder="Password"
