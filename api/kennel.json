@@ -37,10 +37,10 @@
       "id": 8
     },
     {
+      "id": 9,
       "name": "Choggy",
       "breed": "Daschund",
-      "employeeId": 1,
-      "id": 9
+      "employeeId": 4
     },
     {
       "name": "Uchiha Sasuke",
@@ -67,6 +67,12 @@
       "name": "Gary",
       "mood": "frustrated",
       "locationId": 2
+    },
+    {
+      "name": "Fucboi",
+      "mood": "spicy",
+      "locationId": 3,
+      "id": 4
     }
   ],
   "locations": [
@@ -79,6 +85,11 @@
       "id": 2,
       "name": "Firelink Shrine",
       "address": "420 Ember St."
+    },
+    {
+      "name": "New Haven",
+      "address": "99 Riot Road",
+      "id": 3
     }
   ],
   "owners": [

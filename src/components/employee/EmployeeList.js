@@ -27,11 +27,20 @@ const EmployeeList = props => {
 
   // Finally we use map() to "loop over" the employees array to show a list of employee cards
   return (
-    <div className="container-cards">
-      {employees.map(employee => 
-        <EmployeeCard key={employee.id} employee={employee} deleteEmployee={deleteEmployee} history={props.history}/>
-      )}
-    </div>
+    <>
+      <section className="section-content">
+        <button type="button"
+          className="btn"
+          onClick={() => {props.history.push("/employees/new")}}>
+          Add Employee
+        </button>
+      </section>
+      <div className="container-cards">
+        {employees.map(employee => 
+          <EmployeeCard key={employee.id} employee={employee} deleteEmployee={deleteEmployee} history={props.history}/>
+        )}
+      </div>
+    </>
   );
 };
 
