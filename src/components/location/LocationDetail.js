@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import LocationManager from '../../modules/LocationManager';
+import ApiManager from '../../modules/ApiManager';
 import './LocationDetail.css';
 import EmployeeCard from '../employee/EmployeeCard'
-import handleNoId from '../../helpers/handleNoId'
 
 const LocationDetail = props => {
   const [location, setLocation] = useState({ name: "", address: "" });
@@ -10,8 +9,8 @@ const LocationDetail = props => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    //get(id) from LocationManager and hang on to the data; put it into state
-    LocationManager.getWithEmployees(props.locationId)
+    //get(id) from ApiManager and hang on to the data; put it into state
+    ApiManager.getWithEmbed('locations', props.locationId, 'employees')
       .then(location => {
         setLocation({
           name: location.name,
@@ -25,12 +24,10 @@ const LocationDetail = props => {
   const handleDelete = () => {
     //invoke the delete function in AnimalManger and re-direct to the animal list.
     setIsLoading(true);
-    LocationManager.delete(props.locationId).then(() =>
+    ApiManager.delete('locations', props.locationId).then(() =>
       props.history.push("/locations")
     );
   };
-
-  handleNoId(props, location)
 
   return (
     <div className="card">

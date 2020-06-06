@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import EmployeeManager from '../../modules/EmployeeManager';
-import LocationManager from '../../modules/LocationManager';
+import ApiManager from '../../modules/ApiManager';
 import './EmployeeForm.css';
 
 const EmployeeForm = props => {
@@ -9,7 +8,7 @@ const EmployeeForm = props => {
     const [locations, setLocations] = useState([])
 
     const getLocations = () => {
-        LocationManager.getAll().then(locations => setLocations(locations))
+        ApiManager.getAll('locations').then(locations => setLocations(locations))
     }
 
     const handleFieldChange = e => {
@@ -21,7 +20,7 @@ const EmployeeForm = props => {
     const constructNewEmployee = e => {
         e.preventDefault()
         setIsLoading(true)
-        EmployeeManager.post(employee).then(() => props.history.push('/employees'))
+        ApiManager.post('employees', employee).then(() => props.history.push('/employees'))
     }
 
     useEffect(() => getLocations(), []) 

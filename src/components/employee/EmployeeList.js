@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import the components we will need
 import EmployeeCard from './EmployeeCard';
-import EmployeeManager from '../../modules/EmployeeManager';
+import ApiManager from '../../modules/ApiManager';
 
 const EmployeeList = props => {
   // The initial state is an empty array
@@ -10,14 +10,14 @@ const EmployeeList = props => {
   const getEmployees = () => {
     // After the data comes back from the API, we
     //  use the setEmployees function to update state
-    return EmployeeManager.getAll().then(employees => {
+    return ApiManager.getAll('employees').then(employees => {
       setEmployees(employees)
     });
   };
 
   const deleteEmployee = id => {
-    EmployeeManager.delete(id)
-      .then(() => EmployeeManager.getAll().then(setEmployees))
+    ApiManager.delete('employees', id)
+      .then(() => ApiManager.getAll('employees').then(setEmployees))
   }
 
   // got the employees from the API on the component's first render

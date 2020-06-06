@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import the components we will need
 import OwnerCard from './OwnerCard';
-import OwnerManager from '../../modules/OwnerManager';
+import ApiManager from '../../modules/ApiManager';
 
 const OwnerList = props => {
   // The initial state is an empty array
@@ -10,13 +10,13 @@ const OwnerList = props => {
   const getOwners = () => {
     // After the data comes back from the API, we
     //  use the setOwners function to update state
-    return OwnerManager.getAll().then(ownersFromAPI => {
+    return ApiManager.getAll('owners').then(ownersFromAPI => {
       setOwners(ownersFromAPI)
     });
   };
 
   const deleteOwner = id => {
-    OwnerManager.delete(id).then(() => OwnerManager.getAll().then(setOwners))
+    ApiManager.delete('owners', id).then(() => ApiManager.getAll('owners').then(setOwners))
   }
 
   // got the owners from the API on the component's first render

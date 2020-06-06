@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AnimalManager from '../../modules/AnimalManager';
-import EmployeeManager from '../../modules/EmployeeManager';
+import ApiManager from '../../modules/ApiManager';
 import './AnimalForm.css'
 
 const AnimalForm = props => {
@@ -9,7 +8,7 @@ const AnimalForm = props => {
     const [employees, setEmployees] = useState([]);
 
     const getEmployees = () => {
-      return EmployeeManager.getAll()
+      return ApiManager.getAll('employees')
         .then(employees => {setEmployees(employees)})
     }
 
@@ -25,7 +24,7 @@ const AnimalForm = props => {
             window.alert('Please fuck off.');
         } else {
             setIsLoading(true);
-            AnimalManager.post(animal)
+            ApiManager.post('animals', animal)
                 .then(() => props.history.push('/animals'))
         }
     };

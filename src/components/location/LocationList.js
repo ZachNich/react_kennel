@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import the components we will need
 import LocationCard from './LocationCard';
-import LocationManager from '../../modules/LocationManager';
+import ApiManager from '../../modules/ApiManager';
 
 const LocationList = props => {
   // The initial state is an empty array
@@ -10,13 +10,13 @@ const LocationList = props => {
   const getLocations = () => {
     // After the data comes back from the API, we
     //  use the setLocations function to update state
-    return LocationManager.getAll().then(locationsFromAPI => {
+    return ApiManager.getAll('locations').then(locationsFromAPI => {
       setLocations(locationsFromAPI)
     });
   };
 
   const deleteLocation = id => {
-    LocationManager.delete(id).then(() => LocationManager.getAll().then(setLocations))
+    ApiManager.delete('locations', id).then(() => ApiManager.getAll('locations').then(setLocations))
   }
 
   // got the locations from the API on the component's first render

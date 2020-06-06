@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
-import AnimalManager from "../../modules/AnimalManager"
-import EmployeeManager from "../../modules/EmployeeManager"
+import ApiManager from "../../modules/ApiManager"
 import "./AnimalForm.css"
 
 const AnimalEditForm = props => {
@@ -9,7 +8,7 @@ const AnimalEditForm = props => {
   const [employees, setEmployees] = useState([]);
 
   const getEmployees = () => {
-    return EmployeeManager.getAll()
+    return ApiManager.getAll('employees')
       .then(employees => {setEmployees(employees)})
   }
 
@@ -28,14 +27,14 @@ const AnimalEditForm = props => {
     };
 
     const updateExistingAnimal = () => {
-      AnimalManager.update(editedAnimal)
+      ApiManager.update('animals', editedAnimal)
         .then(() => props.history.push("/animals"))
     }
 
   useEffect(() => {getEmployees()}, [])
 
   useEffect(() => {
-    AnimalManager.get(props.match.params.animalId)
+    ApiManager.get('animals', props.match.params.animalId)
       .then(animal => {
         setAnimal(animal);
         setIsLoading(false);
