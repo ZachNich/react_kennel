@@ -15,6 +15,7 @@ import EmployeeWithAnimals from "./employee/EmployeeWithAnimals"
 import EmployeeForm from "./employee/EmployeeForm";
 import OwnerList from "./owner/OwnerList";
 import OwnerForm from './owner/OwnerForm';
+import hasId from '../helpers/hasId';
 
 const ApplicationViews = props => {
   const hasUser = props.hasUser;
@@ -66,7 +67,9 @@ const ApplicationViews = props => {
       }} />      
       <Route path="/locations/:locationId(\d+)" render={props => {
         if (hasUser) {
-          return <LocationDetail locationId={parseInt(props.match.params.locationId)} hasUser={hasUser} {...props} />
+          if (hasId(props, 'locations', props.match.params.locationId)) {
+            return <LocationDetail locationId={parseInt(props.match.params.locationId)} hasUser={hasUser} {...props} />
+          }
         } else {
           return <Redirect to="/login" />
         }

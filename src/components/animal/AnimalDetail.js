@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import AnimalManager from "../../modules/AnimalManager";
+import ApiManager from "../../modules/ApiManager";
 import "./AnimalDetail.css";
-import handleNoId from '../../helpers/handleNoId'
 
 const AnimalDetail = props => {
   const [animal, setAnimal] = useState({ name: "", breed: "" });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    //get(id) from AnimalManager and hang on to the data; put it into state
-    AnimalManager.get(props.animalId).then(animal => {
+    //get(id) from ApiManager and hang on to the data; put it into state
+    ApiManager.get('animals', props.animalId).then(animal => {
       setAnimal({
         name: animal.name,
         breed: animal.breed
@@ -21,13 +20,10 @@ const AnimalDetail = props => {
   const handleDelete = () => {
     //invoke the delete function in AnimalManger and re-direct to the animal list.
     setIsLoading(true);
-    AnimalManager.delete(props.animalId).then(() =>
+    ApiManager.delete('animals', props.animalId).then(() =>
       props.history.push("/animals")
     );
   };
-
-
-  handleNoId(props, animal)
 
     return (
       <div className="card">
